@@ -1,0 +1,51 @@
+<!-- <%- include('../includes/head.ejs') %>
+     <link rel="stylesheet" href="/css/forms.css">
+     <link rel="stylesheet" href="/css/product.css">
+     </head>
+
+     <body>
+
+          <main>
+
+               <form class="product-form" action="/project/create-project" method="POST"  >
+                    <div class="form-control">
+                         <label for="title">Title</label>
+                         <input class="" type="text" name="title" id="title" value="">
+                    </div>
+
+                    <div class="form-control">
+                         <label for="category">Category</label>
+                         <input class="" type="string" name="category" id="category" value="">
+                    </div>
+                    <div class="form-control">
+                         <label for="tool1">JS</label>
+                         <input type="checkbox" id="tool1" name="javascript" value="javascript" />
+                         <label for="tool2">React</label>
+                         <input type="checkbox" id="tool2" name="React" value="react" />
+                         <label for="tool3">Express</label>
+                         <input type="checkbox" id="tool3" name="Express" value="express" />
+                    </div>
+
+                    <button class="btn" type="submit">Add</button>
+               </form>
+          </main>
+          <%- include('../includes/end.ejs') %> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Add project</title>
+</head>
+
+<body>
+     <form action="/project/createproject" method="post">
+          <input type="text" name="title" id="title" />
+          <input type="text" name="category" id="category" />
+          <input type="submit" value="Submit">
+     </form>
+</body>
+
+</html>
