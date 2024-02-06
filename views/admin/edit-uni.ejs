@@ -1,0 +1,152 @@
+<%- include('../includes/head.ejs') %>
+     <link rel="stylesheet" href="/css/forms.css">
+     <link rel="stylesheet" href="/css/product.css">
+     </head>
+
+     <body>
+          <%- include('../includes/navigation.ejs') %>
+
+               <main>
+                    <% if (errorMessage) { %>
+                         <div class="user-message user-message--error">
+                              <%= errorMessage %>
+                         </div>
+                         <% } %>
+                              <form class="product-form"
+                                   action="/uni/<% if (editing) { %>edit-uni<% } else { %>add-uni<% } %>" method="POST"
+                                   enctype="multipart/form-data">
+
+                                   <!-- Uni name -->
+                                   <div class="form-control">
+                                        <label for="name">Name</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'name') ? 'invalid' : '' %>"
+                                             type="text" name="name" id="name"
+                                             value="<% if (editing || hasError) { %><%= university.name %><% } %>">
+                                   </div>
+
+                                   <!-- Location -->
+                                   <div class="form-control">
+                                        <label for="location">Location</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'location') ? 'invalid' : '' %>"
+                                             type="text" name="location" id="location"
+                                             value="<% if (editing || hasError) { %><%= university.location %><% } %>">
+                                   </div>
+
+                                   <!-- Estimate Coa -->
+                                   <div class="form-control">
+                                        <label for="estimateCoa">Estimate COA</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'estimateCoa') ? 'invalid' : '' %>"
+                                             type="number" name="estimateCoa" id="estimateCoa" step="0.01"
+                                             value="<% if (editing || hasError) { %><%= university.estimateCoa %><% } %>">
+                                   </div>
+
+                                   <!-- Admission Fee -->
+                                   <div class="form-control">
+                                        <label for="admissionFee">Admission Fee</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'admissionFee') ? 'invalid' : '' %>"
+                                             type="number" name="admissionFee" id="admissionFee" step="0.01"
+                                             value="<% if (editing || hasError) { %><%= university.admissionFee %><% } %>">
+                                   </div>
+
+                                   <!-- courses -->
+                                   <div class="form-control">
+                                        <label for="courses">Courses</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'courses') ? 'invalid' : '' %>"
+                                             type="text" name="courses" id="courses"
+                                             value="<% if (editing || hasError) { %><%= university.courses %><% } %>">
+                                   </div>
+
+                                   <!-- UnderGrad req -->
+                                   <div class="form-control">
+                                        <label for="undergradReq">Undergraduate Requirements</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'undergradReq') ? 'invalid' : '' %>"
+                                             type="number" name="undergradReq" id="undergradReq"
+                                             value="<% if (editing || hasError) { %><%= university.undergradReq %><% } %>">
+                                   </div>
+
+                                   <!-- Deadline -->
+                                   <div class="form-control">
+                                        <label for="deadline">Deadline</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'deadline') ? 'invalid' : '' %>"
+                                             type="text" name="deadline" id="deadline"
+                                             value="<% if (editing || hasError) { %><%= university.deadline %><% } %>">
+                                   </div>
+
+                                   <!-- Portal -->
+                                   <div class="form-control">
+                                        <label for="portal">Portal</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'portal') ? 'invalid' : '' %>"
+                                             type="text" name="portal" id="portal"
+                                             value="<% if (editing || hasError) { %><%= university.portal %><% } %>">
+                                   </div>
+
+                                   <!-- Rank -->
+                                   <div class="form-control">
+                                        <label for="rank">Rank</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'rank') ? 'invalid' : '' %>"
+                                             type="text" name="rank" id="rank"
+                                             value="<% if (editing || hasError) { %><%= university.rank %><% } %>">
+                                   </div>
+                                   <!-- Course Link -->
+                                   <div class="form-control">
+                                        <label for="courseLink">Course Link</label>
+                                        <input
+                                             class="<%= validationErrors.find(e => e.param === 'courseLink') ? 'invalid' : '' %>"
+                                             type="text" name="courseLink" id="courseLink"
+                                             value="<% if (editing || hasError) { %><%= university.courseLink %><% } %>">
+                                   </div>
+
+                                   <!-- Document Required -->
+
+                                   <div class="form-control">
+                                        <label>Documents Required:</label>
+                                        <div>
+                                             <input type="checkbox" name="lor" id="lor" <% if (editing || hasError) { if
+                                                  (university.docRequired.lor) { %> checked <% } } %>>
+                                                  <label for="lor">Letter of Recommendation (LOR)</label>
+                                        </div>
+                                        <div>
+                                             <input type="checkbox" name="transcript" id="transcript" <% if (editing ||
+                                                  hasError) { if (university.docRequired.transcript) { %> checked <% } }
+                                                  %>>
+                                                  <label for="transcript">Transcript</label>
+                                        </div>
+                                        <div>
+                                             <input type="checkbox" name="bankStatement" id="bankStatement" <% if
+                                                  (editing || hasError) { if (university.docRequired.bankStatement) { %>
+                                             checked <% } } %>>
+                                                  <label for="bankStatement">Bank Statement</label>
+                                        </div>
+                                        <div>
+                                             <input type="checkbox" name="sop" id="sop" <% if (editing || hasError) { if
+                                                  (university.docRequired.sop) { %> checked <% } } %>>
+                                                  <label for="sop">Statement of Purpose (SOP)</label>
+                                        </div>
+                                        <div>
+                                             <input type="checkbox" name="resume" id="resume" <% if (editing ||
+                                                  hasError) { if (university.docRequired.resume) { %> checked <% } } %>>
+                                                  <label for="resume">Resume/CV</label>
+                                        </div>
+                                   </div>
+
+
+                                   <% if (editing) { %>
+                                        <input type="hidden" value="<%= product._id %>" name="productId">
+                                        <% } %>
+
+                                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                             <button class="btn" type="submit">
+                                                  <% if (editing) { %>Update Product<% } else { %>Add Product<% } %>
+                                             </button>
+                              </form>
+               </main>
+               <%- include('../includes/end.ejs') %>

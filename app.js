@@ -52,6 +52,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/ProjectRoutes/project');
+const uniRoutes = require('./routes/Uni/uni');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
@@ -101,6 +102,7 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
 app.use('/project', projectRoutes);
+app.use('/uni', uniRoutes);
 
 app.get('/500', errorController.get500);
 
